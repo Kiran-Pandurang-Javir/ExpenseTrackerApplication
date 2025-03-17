@@ -1,37 +1,58 @@
 package org.kp.entity;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "user" )
 public class User {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "email", nullable = false)
     private String email;
-    private Boolean isActive;
+    
+    @Column(nullable = false)
+    private String password;
+
+    @Column(name = "active", nullable = false)
+    private Boolean active = true;
+
+
 
     public User(){
 
     }
-    public User(int id, String name, String email, Boolean isActive) {
-        this.id = id;
+    public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
-        this.isActive = isActive;
+        this.password=password;
+        this.active = true;
     }
 
-    public Boolean getActive() {
-        return isActive;
+    public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public Boolean getActive() {
+        return active;
     }
 
     public void setActive(Boolean active) {
-        isActive = active;
+        active = true;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
