@@ -16,13 +16,11 @@ public class User {
     @Column(name = "email", nullable = false)
     private String email;
     
-    @Column(nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "active", nullable = false)
     private Boolean active = true;
-
-
 
     public User(){
 
@@ -73,4 +71,12 @@ public class User {
     }
 
 
+    public boolean isActive() {
+        return active;
+
+    }
+    public void setActive(boolean active){
+    this.active = active;
+    }
 }
+
